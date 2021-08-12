@@ -55,3 +55,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+
+## Google maps reference
+
+Most used links to do the main features with google maps library.
+
+### Google maps Places Autocomplete
+https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=es_419
+
+### Google maps Places Drawing
+https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=es_419
+
+### Reference of each class
+https://developers.google.com/maps/documentation/javascript/reference?hl=en
+
+### Samples 
+https://developers.google.com/maps/documentation/javascript/examples/control-disableUI
+
