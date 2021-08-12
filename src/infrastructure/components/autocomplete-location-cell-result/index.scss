@@ -1,0 +1,17 @@
+.pac-item {
+    cursor: pointer;
+    padding: 0px 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 30px;
+    text-align: left;
+    border-top: 1px solid #e6e6e6;
+    font-size: 11px;
+    color: #999;
+
+    .pac-matched {
+        font-weight: 700;
+        color: black;
+    }
+}
