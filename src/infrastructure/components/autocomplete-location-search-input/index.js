@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 
 import getPlacePredictions from '../../services/autoCompleteLocationService'
-import { AutocompleteLocationCellResultComponent } from '../autocomplete-location-cell-result/AutocompleteLocationCellComponent';
+import AutocompleteLocationCellResultComponent  from '../autocomplete-location-cell-result/AutocompleteLocationCellComponent';
 
-function AutocompleteLocationSearchInputComponent() {
+function AutocompleteLocationSearchInputComponent({onSelectedValue}) {
 
     const [predictions, setPredictions] = useState([]);
 
@@ -13,8 +13,12 @@ function AutocompleteLocationSearchInputComponent() {
         setPredictions(predictionsSearch);
     };
 
+    const onLocationSelected = location => {
+        onSelectedValue(location);
+        setPredictions([])
+    }
+
     useEffect(() => {
-        console.log("test");
     }, [predictions]);
 
     return (
@@ -22,7 +26,7 @@ function AutocompleteLocationSearchInputComponent() {
             <input className="searchbox" onChange={handleChange} />
             <div className="autocomplete-dropdown-container">
                 {predictions.map((prediction => (
-                    AutocompleteLocationCellResultComponent(prediction)
+                    <AutocompleteLocationCellResultComponent prediction={prediction} onLocationSelect={onLocationSelected}/>
                 )))}
             </div>
         </div>

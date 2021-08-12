@@ -1,13 +1,14 @@
 import React from 'react';
 import './index.scss';
 
-export function AutocompleteLocationCellResultComponent(prediction) {
+function AutocompleteLocationCellResultComponent({prediction, onLocationSelect}) {
 
     
     const handleSelect = () => {
         console.log("handleSelect", prediction);
+        onLocationSelect(prediction)
     };
-
+    
     const getDescriptionFormated = (description, matchedSubstrings) => {
         const matchedSubstringsValue = matchedSubstrings[0]
 
@@ -38,3 +39,5 @@ export function AutocompleteLocationCellResultComponent(prediction) {
         </div>
     );
 }
+
+export default AutocompleteLocationCellResultComponent;

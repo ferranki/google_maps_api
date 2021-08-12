@@ -1,22 +1,26 @@
 const predictionsKeyValue = [];
 
+function hasCache(key) {
+    return predictionsKeyValue[key];
+}
+
 async function getPlacePredictions(value) {
 
-    if(!value || value === ""){
+    if (!value || value === "") {
         return []
     }
 
-    if(predictionsKeyValue[value]){
+    if (hasCache(value)) {
         return predictionsKeyValue[value];
     }
 
     const service = new window.google.maps.places.AutocompleteService();
     const predictionsResults = await service.getPlacePredictions({ input: value });
-    console.log(predictionsResults);
-    
-    predictionsKeyValue[value] = predictionsResults.predictions;
+    const predictions = predictionsResults.predictions
 
-    return predictionsResults.predictions;
+    predictionsKeyValue[value] = predictions;
+
+    return predictions;
 
 }
 
