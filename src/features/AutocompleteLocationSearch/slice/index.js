@@ -7,9 +7,7 @@ export const slice = createSlice({
   },
   reducers: {
     addAddress: (state, action) => {
-      console.log("addAddress", action.payload)
       state.value = [...state.value,action.payload];
-      console.log(state.value)
     }
   },
 });
