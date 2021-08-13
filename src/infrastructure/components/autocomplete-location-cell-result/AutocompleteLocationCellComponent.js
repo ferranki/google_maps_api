@@ -5,7 +5,6 @@ function AutocompleteLocationCellResultComponent({prediction, onLocationSelect})
 
     
     const handleSelect = () => {
-        console.log("handleSelect", prediction);
         onLocationSelect(prediction)
     };
     

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import './index.scss';
-
 import getPlacePredictions from '../../services/autoCompleteLocationService'
-import AutocompleteLocationCellResultComponent  from '../autocomplete-location-cell-result/AutocompleteLocationCellComponent';
 
-function AutocompleteLocationSearchInputComponent({onSelectedValue}) {
+const AutocompleteLocationCellResultComponent = React.lazy(() => import('../autocomplete-location-cell-result/AutocompleteLocationCellComponent'));
+
+function AutocompleteLocationSearchInputComponent({ onSelectedValue }) {
 
     const [predictions, setPredictions] = useState([]);
 
@@ -23,7 +23,7 @@ function AutocompleteLocationSearchInputComponent({onSelectedValue}) {
 
     return (
         <div className="autocomplete-root">
-            <input data-cy="searchbox" className="searchbox" onChange={handleChange} />
+            <input className="searchbox" onChange={handleChange} />
             <Suspense fallback={<h1>Loading...</h1>}>
                 <div className="autocomplete-dropdown-container">
                     {predictions.map((prediction => (

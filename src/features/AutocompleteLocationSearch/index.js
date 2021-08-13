@@ -9,7 +9,6 @@ function AutocompleteLocationSearchFeature() {
     const dispatch = useDispatch();
 
     const onSelectedValue = address => {
-        console.log("onSelectedValue", address)
         dispatch(addAddress(address))
     }
 
