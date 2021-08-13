@@ -12,3 +12,6 @@ jobs:
 
       - name: Build
         run: npm build
+        
+      - name: Cypress tests
+        run: npx cypress info
