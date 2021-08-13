@@ -1,7 +1,7 @@
 
 let map;
 
-async function initMap({ mapElementId, initOptions, canDraw = false }) {
+export const initMap = ({ mapElementId, initOptions, canDraw = false }) => {
 
     if (!mapElementId) {
         throw new Error('Missing mapElementId');
@@ -32,7 +32,7 @@ async function initMap({ mapElementId, initOptions, canDraw = false }) {
     return map;
 }
 
-function centerMap(location) {
+export const centerMap = (location) => {
     if (!location) {
         throw new Error('Missing location');
     }
@@ -40,7 +40,3 @@ function centerMap(location) {
     map.setCenter(location);
 }
 
-module.exports = {
-    centerMap,
-    initMap,
-};
