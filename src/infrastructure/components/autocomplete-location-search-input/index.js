@@ -23,7 +23,7 @@ function AutocompleteLocationSearchInputComponent({ onSelectedValue }) {
 
     return (
         <div className="autocomplete-root">
-            <input className="searchbox" onChange={handleChange} />
+            <input data-cy="searchbox" className="searchbox" onChange={handleChange} />
             <Suspense fallback={<h1>Loading...</h1>}>
                 <div className="autocomplete-dropdown-container">
                     {predictions.map((prediction => (
