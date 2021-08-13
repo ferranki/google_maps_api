@@ -34,7 +34,7 @@ function AutocompleteLocationCellResultComponent({prediction, onLocationSelect})
     }
 
     return (
-        <div className="pac-item" onClick={handleSelect}>
+        <div data-cy="pac-item" className="pac-item" onClick={handleSelect}>
             {getDescriptionFormated(prediction.description, prediction.matched_substrings)}
         </div>
     );

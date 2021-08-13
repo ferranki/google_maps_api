@@ -23,12 +23,14 @@ function AutocompleteLocationSearchInputComponent({onSelectedValue}) {
 
     return (
         <div className="autocomplete-root">
-            <input className="searchbox" onChange={handleChange} />
-            <div className="autocomplete-dropdown-container">
-                {predictions.map((prediction => (
-                    <AutocompleteLocationCellResultComponent prediction={prediction} onLocationSelect={onLocationSelected}/>
-                )))}
-            </div>
+            <input data-cy="searchbox" className="searchbox" onChange={handleChange} />
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <div className="autocomplete-dropdown-container">
+                    {predictions.map((prediction => (
+                        <AutocompleteLocationCellResultComponent key={prediction.description} prediction={prediction} onLocationSelect={onLocationSelected} />
+                    )))}
+                </div>
+            </Suspense>
         </div>
     );
 }
