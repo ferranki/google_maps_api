@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import './index.scss';
 import { selectMarkersAddresses } from '../../../features/AutocompleteLocationSearch/slice';
@@ -29,14 +29,21 @@ function MapComponent() {
         centerMap(location);
     }
 
+    const fetchCoordinates = useCallback(
+        () => {
+            if (markers.length > 0) {
+                getCoordinatesAndAddMarker();
+            }
+        },
+        [markers],
+      );
+
     useEffect(() => {
         initializeMap();
     }, []);
 
     useEffect(() => {
-        if (markers.length > 0) {
-            getCoordinatesAndAddMarker();
-        }
+        fetchCoordinates();
     }, [markers]);
 
     return (
