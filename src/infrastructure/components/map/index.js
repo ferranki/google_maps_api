@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import './index.scss';
 import { selectMarkersAddresses } from '../../../features/AutocompleteLocationSearch/slice';
 import getCoordinatesByPlaceId from '../../services/geoCoderLocationService';
+import addMarker from '../../services/markerMapService';
+import { centerMap, initMap } from '../../services/drawingMapManagerService';
 
 let map;
 
@@ -10,44 +12,25 @@ function MapComponent() {
 
     const markers = useSelector(selectMarkersAddresses);
 
-    const initMap = () => {
-        map = new window.google.maps.Map(document.getElementById("map"), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8,
+    const initializeMap = async () => {
+        const mapElementId = document.getElementById("map");
+        const initOptions = {
+            center: { lat: 41.490519535953377, lng: 2.1114385293669247 },
+            zoom: 15,
             disableDefaultUI: true,
-        });
-        const drawingManager = new window.google.maps.drawing.DrawingManager({
-            drawingControl: false,
-            markerOptions: {
-                icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-            },
-            circleOptions: {
-                fillColor: "#ffff00",
-                fillOpacity: 1,
-                strokeWeight: 5,
-                clickable: false,
-                editable: true,
-                zIndex: 1,
-            },
-        });
-        drawingManager.setMap(map);
-    }
+        };
 
-    function addMarker(location, map) {
-        new window.google.maps.Marker({
-            position: location,
-            map: map,
-        });
+        map = await initMap({ mapElementId, initOptions, canDraw: false });
     }
 
     const getCoordinatesAndAddMarker = async () => {
         const location = await getCoordinatesByPlaceId(markers[markers.length - 1].place_id);
         addMarker(location, map);
-        map.setCenter(location);
+        centerMap(location);
     }
 
     useEffect(() => {
-        initMap();
+        initializeMap();
     }, []);
 
     useEffect(() => {
