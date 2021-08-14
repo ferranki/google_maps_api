@@ -18,8 +18,6 @@ describe('Map app', () => {
         cy.get('[data-cy=searchbox]').click();
         cy.get('[data-cy=searchbox]').type('barcelona');
         cy.get('[data-cy=pac-item]').its('length').should('be.gte', 4);
-
-        
     });
 
     it('should add marker when click on predictions', () => {
