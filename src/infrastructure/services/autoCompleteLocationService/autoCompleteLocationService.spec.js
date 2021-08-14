@@ -47,8 +47,6 @@ describe('AutocompleteLocationService', () => {
 
             const result = await autoCompleteLocationService.getPlacePredictions("barcelona");
 
-            console.log(result)
-
             expect(result).toEqual(predictionsResult);
             sinon.assert.notCalled(spy);
         });
