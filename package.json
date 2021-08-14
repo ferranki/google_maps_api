@@ -25,7 +25,7 @@
     "test:e2e": "cypress run"
   },
   "eslintConfig": {
-    "env":{
+    "env": {
       "cypress/globals": true
     },
     "extends": [
@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^8.2.0"
+    "cypress": "^8.2.0",
+    "sinon": "^11.1.2"
   }
 }

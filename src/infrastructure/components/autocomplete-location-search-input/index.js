@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import './index.scss';
-import getPlacePredictions from '../../services/autoCompleteLocationService'
+import autocompleteLocationService from '../../services/autoCompleteLocationService'
 
 const AutocompleteLocationCellResultComponent = React.lazy(() => import('../autocomplete-location-cell-result/AutocompleteLocationCellComponent'));
 
@@ -9,7 +9,7 @@ function AutocompleteLocationSearchInputComponent({ onSelectedValue }) {
     const [predictions, setPredictions] = useState([]);
 
     const handleChange = async event => {
-        const predictionsSearch = await getPlacePredictions(event.target.value);
+        const predictionsSearch = await autocompleteLocationService.getPlacePredictions(event.target.value);
         setPredictions(predictionsSearch);
     };
 
