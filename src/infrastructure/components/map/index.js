@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import './index.scss';
 import { selectMarkersAddresses } from '../../../features/AutocompleteLocationSearch/slice';
@@ -29,22 +29,15 @@ function MapComponent() {
         centerMap(location);
     }
 
-    const fetchCoordinates = useCallback(
-        () => {
-            if (markers.length > 0) {
-                getCoordinatesAndAddMarker();
-            }
-        },
-        [markers],
-      );
-
     useEffect(() => {
         initializeMap();
     }, []);
 
     useEffect(() => {
-        fetchCoordinates();
-    }, [markers]);
+        if (markers.length > 0) {
+            getCoordinatesAndAddMarker();
+        }
+    }, [markers]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div id="map"></div>
