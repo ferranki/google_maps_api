@@ -5,7 +5,7 @@ describe('Map app', () => {
         cy.visit('http://localhost:3000/locations');
     })
 
-    it('frontepage can be opened', () => {
+    it('frontendpage can be opened', () => {
         cy.get('[data-cy=searchbox]');
     });
 
