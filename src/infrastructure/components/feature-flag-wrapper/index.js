@@ -5,7 +5,7 @@ function FeatureFlagWrapper({children}) {
     const [enabledFeature, setEnabledFeature] = useState(false);
 
     featureFlagsService.onReady((isEnabled) => {
-        if(isEnabled != enabledFeature){
+        if(isEnabled !== enabledFeature){
             setEnabledFeature(isEnabled);
         }
     });
