@@ -4,6 +4,7 @@ import {
     addAddress,
 } from './slice';
 import AutocompleteLocationSearchInputComponent from '../../infrastructure/components/autocomplete-location-search-input';
+import FeatureFlagWrapper from '../../infrastructure/components/feature-flag-wrapper';
 
 function AutocompleteLocationSearchFeature() {
     const dispatch = useDispatch();
@@ -12,8 +13,11 @@ function AutocompleteLocationSearchFeature() {
         dispatch(addAddress(address))
     }
 
+    
     return (
-        <AutocompleteLocationSearchInputComponent onSelectedValue={onSelectedValue} />
+        <FeatureFlagWrapper>
+            <AutocompleteLocationSearchInputComponent onSelectedValue={onSelectedValue} />
+        </FeatureFlagWrapper>
     );
 }
 
