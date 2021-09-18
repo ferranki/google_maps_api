@@ -15,7 +15,7 @@ ReactDOM.render(
           <Route path="/locations" component={Locations} />
           <Route component={App} />
         </Switch>
-      </BrowserRouter>,
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
